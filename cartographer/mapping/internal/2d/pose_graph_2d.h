@@ -135,6 +135,8 @@ class PoseGraph2D : public PoseGraph {
   GetLandmarkNodes() const override EXCLUDES(mutex_);
   std::map<int, TrajectoryData> GetTrajectoryData() const override
       EXCLUDES(mutex_);
+  std::size_t GetWorkQueueSize() const override EXCLUDES(mutex_);
+
   std::vector<Constraint> constraints() const override EXCLUDES(mutex_);
   void SetInitialTrajectoryPose(int from_trajectory_id, int to_trajectory_id,
                                 const transform::Rigid3d& pose,

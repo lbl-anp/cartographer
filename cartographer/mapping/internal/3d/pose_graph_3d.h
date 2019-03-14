@@ -133,6 +133,7 @@ class PoseGraph3D : public PoseGraph {
   std::map<std::string /* landmark ID */, PoseGraph::LandmarkNode>
   GetLandmarkNodes() const override EXCLUDES(mutex_);
   std::map<int, TrajectoryData> GetTrajectoryData() const override;
+  std::size_t GetWorkQueueSize() const override EXCLUDES(mutex_);
 
   std::vector<Constraint> constraints() const override EXCLUDES(mutex_);
   void SetInitialTrajectoryPose(int from_trajectory_id, int to_trajectory_id,

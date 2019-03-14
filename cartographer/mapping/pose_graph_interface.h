@@ -128,6 +128,9 @@ class PoseGraphInterface {
   // Returns the trajectory data.
   virtual std::map<int, TrajectoryData> GetTrajectoryData() const = 0;
 
+  // Gets size of worker queue
+  virtual std::size_t GetWorkQueueSize() const = 0;
+
   // Returns the collection of constraints.
   virtual std::vector<Constraint> constraints() const = 0;
 

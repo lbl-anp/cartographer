@@ -685,6 +685,11 @@ PoseGraph2D::GetTrajectoryData() const {
   return {};  // Not implemented yet in 2D.
 }
 
+std::size_t PoseGraph2D::GetWorkQueueSize() const {
+  common::MutexLocker locker(&mutex_);
+  return work_queue_->size();
+}
+
 sensor::MapByTime<sensor::FixedFramePoseData>
 PoseGraph2D::GetFixedFramePoseData() const {
   return {};  // Not implemented yet in 2D.

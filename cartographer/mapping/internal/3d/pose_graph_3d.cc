@@ -733,6 +733,15 @@ PoseGraph3D::GetTrajectoryData() const {
   return optimization_problem_->trajectory_data();
 }
 
+std::size_t PoseGraph3D::GetWorkQueueSize() const {
+  common::MutexLocker locker(&mutex_);
+  if (work_queue_ == nullptr) {
+    return std::size_t(0);
+  } else {
+    return work_queue_->size();
+  }
+}
+
 std::vector<PoseGraphInterface::Constraint> PoseGraph3D::constraints() const {
   common::MutexLocker locker(&mutex_);
   return constraints_;

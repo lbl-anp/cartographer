@@ -133,6 +133,9 @@ class PoseGraph : public PoseGraphInterface {
   virtual std::map<std::string /* landmark ID */, PoseGraph::LandmarkNode>
   GetLandmarkNodes() const = 0;
 
+  // Gets size of worker queue
+  virtual std::size_t GetWorkQueueSize() const = 0;
+
   // Sets a relative initial pose 'relative_pose' for 'from_trajectory_id' with
   // respect to 'to_trajectory_id' at time 'time'.
   virtual void SetInitialTrajectoryPose(int from_trajectory_id,
