@@ -1000,7 +1000,7 @@ PoseGraph3D::GetTrajectoryData() const {
 }
 
 std::size_t PoseGraph3D::GetWorkQueueSize() const {
-  common::MutexLocker locker(&mutex_);
+  absl::MutexLock locker(&mutex_);
   if (work_queue_ == nullptr) {
     return std::size_t(0);
   } else {

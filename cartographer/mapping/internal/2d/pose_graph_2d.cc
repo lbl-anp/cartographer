@@ -973,7 +973,7 @@ PoseGraph2D::GetTrajectoryData() const {
 }
 
 std::size_t PoseGraph2D::GetWorkQueueSize() const {
-  common::MutexLocker locker(&mutex_);
+  absl::MutexLock locker(&mutex_);
   return work_queue_->size();
 }
 
