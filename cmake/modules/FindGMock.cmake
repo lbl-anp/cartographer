@@ -91,3 +91,4 @@ find_package_handle_standard_args(GMock DEFAULT_MSG GMOCK_LIBRARIES
 
 # Mitigate build issue with Catkin
 set(GMOCK_FOUND FALSE)
+set(GMOCK_INCLUDE_DIRS ${GMOCK_SRC_DIR}/include)
