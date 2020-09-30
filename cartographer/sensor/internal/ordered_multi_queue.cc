@@ -68,6 +68,16 @@ void OrderedMultiQueue::Add(const QueueKey& queue_key,
         << "Ignored data for queue: '" << queue_key << "'";
     return;
   }
+  if ( it->second.queue.Size() > 1 ) {
+    if ( it->second.queue.Peek<Data>()->GetTime() > data->GetTime()) {
+      LOG(WARNING)
+          << "Skipping data with timestamp earlier than "
+          << "most recent data in queue. data queue key: '" << queue_key
+          << "' data time: '" << data->GetTime()
+          << "' last time: '" << it->second.queue.Peek<Data>()->GetTime() << "'";
+      return;  
+    }
+  }
   it->second.queue.Push(std::move(data));
   Dispatch();
 }
