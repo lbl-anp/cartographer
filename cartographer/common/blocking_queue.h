@@ -123,6 +123,16 @@ class BlockingQueue {
     return deque_.front().get();
   }
 
+  // Like Peek but from the back
+  template <typename R>
+  const R* PeekBack() {
+    absl::MutexLock lock(&mutex_);
+    if (deque_.empty()) {
+      return nullptr;
+    }
+    return deque_.back().get();
+  }
+
   // Returns the number of items currently in the queue.
   size_t Size() {
     absl::MutexLock lock(&mutex_);
